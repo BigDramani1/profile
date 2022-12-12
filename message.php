@@ -34,6 +34,6 @@ if (isset($_POST['sendmail'])) {
     if (!$mail->Send()) {
         echo $mail->ErrorInfo;
     } else {
-        header('location: ../view/index.php');
+        header('location: index.php');
     }
 }

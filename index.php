@@ -20,6 +20,8 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="assets/css/style.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -113,7 +115,7 @@
                       </h5>
                     </div>
                     <p class="lead">
-                     My name is Dramani Alhassan. I live in Accra, Ghana
+                     My name is Dramani Alhassan. I live in Accra, Ghana.
                     </p>
                     <p class="lead">
                       Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis
@@ -375,7 +377,7 @@
               <div class="work-content">
                 <div class="row">
                   <div class="col-sm-8">
-                    <h2 class="w-title">Iphone Shopping</h2>
+                    <h2 class="w-title">iPhone Shopping</h2>
                     <div class="w-more">
                       <a href='https://github.com/BigDramani1/Apple-E-commerce' style="color:#0078ff">Click Me</a><span style='float:right'><i class="fa fa-arrow-left" aria-hidden="true"></i> GitHub Link</span>
                     </div>
@@ -424,7 +426,7 @@
                       </h5>
                     </div>
                     <div>
-                      <form method="post" role="form" action='message.php'>
+                      <form method="post" role="form" action='message.php' id='form'>
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
@@ -447,7 +449,7 @@
                             </div>
                           </div>
                           <div class="col-md-12 text-center">
-                            <button type="submit" name="sendmail" class="button button-a button-big button-rouded">Send Message</button>
+                            <button type="submit" name="sendmail" id="btnSubmit" class="button button-a button-big button-rouded">Send Message</button>
                           </div>
                         </div>
                       </form>
@@ -504,6 +506,50 @@
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+<script>
+function save() 
+{
+    $("#btnSubmit").on("click", function() {
+        var $this           = $(this); //submit button selector using ID
+        var $caption        = $this.html();// We store the html content of the submit button
+        var form            = "#form"; //defined the #form ID
+        var formData        = $(form).serializeArray(); //serialize the form into array
+        var route           = $(form).attr('action'); //get the route using attribute action
+
+        // Ajax config
+        $.ajax({
+            type: "POST", //we are using POST method to submit the data to the server side
+            url: route, // get the route value
+            data: formData, // our serialized array data for server side
+            beforeSend: function () {//We add this before send to disable the button once we submit it so that we prevent the multiple click
+                $this.attr('disabled', true).html("Processing...");
+            },
+            success: function (response) {//once the request successfully process to the server side it will return result here
+                $this.attr('disabled', false).html($caption);
+
+                // Reload lists of employees
+                all();
+
+                // We will display the result using alert
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Message Sent! I will get back to you soon',
+                  text: response
+                });
+
+                // Reset form
+                resetForm(form);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                // You can put something here if there is an error from submitted request
+            }
+        });
+    });
+}
+
+
+</script>
+  
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
