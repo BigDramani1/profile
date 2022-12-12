@@ -5,7 +5,7 @@ if (isset($_POST['sendmail'])) {
     $to = "a.dramani@aisghana.org";
     $subject = "{$_POST['subject']} from Your Profile";
     $msg = "<h3>From {$_POST["name"]}</h3> <br><p style=font-size:18px;>{$_POST['message']}</p>";
-    include('../smtp/smtp/PHPMailerAutoload.php');
+    include('smtp/smtp/PHPMailerAutoload.php');
     $mail = new PHPMailer();
     $mail->SMTPDebug = 3;
     $mail->IsSMTP();
