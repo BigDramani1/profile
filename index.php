@@ -22,6 +22,7 @@
   <link href="assets/css/style.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -115,12 +116,21 @@
                       </h5>
                     </div>
                     <p class="lead">
-                     My name is Dramani Alhassan. I live in Accra, Ghana.
+                     My name is Dramani Alhassan. I live in Accra, Ghana. From a young age, I have always like to explore the internet to learn new things. This simple act of exploring brings me endless satisfaction. My major in Ashesi University was Management Information System (MIS). My goal is to be a Senior Software Developer and UI/UX Designer expert. 
                     </p>
                     <p class="lead">
-                      Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus suscipit tortor eget felis
-                      porttitor volutpat. Vestibulum
-                      ac diam sit amet quam vehicula elementum sed sit amet dui. porttitor at sem.
+                    <div class="title-box-2">
+                      <h5 class="title-left">
+                        Education Background
+                      </h5>
+                    </div>
+                    <strong>Ashesi University - 1st year- 4th year</strong>
+                    <br>Berekuso, Eastern Region
+                     <br>1st September 2018 - 15th December 2022
+                    <br>
+                    <br><strong>American International School - 8th grade-12th grade</strong>
+                    <br>Accra, East Legon 
+                    <br>12th August 2013 - 24th May 2018, Accra, Ghana
                     </p>
                    
                   </div>
@@ -449,7 +459,7 @@
                             </div>
                           </div>
                           <div class="col-md-12 text-center">
-                            <button type="submit" name="sendmail" id="btnSubmit" class="button button-a button-big button-rouded">Send Message</button>
+                            <button type="submit" name="sendmail" id="btnsubmit" class="button button-a button-big button-rouded">Send Message</button>
                           </div>
                         </div>
                       </form>
@@ -506,49 +516,23 @@
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<script>
-function save() 
-{
-    $("#btnSubmit").on("click", function() {
-        var $this           = $(this); //submit button selector using ID
-        var $caption        = $this.html();// We store the html content of the submit button
-        var form            = "#form"; //defined the #form ID
-        var formData        = $(form).serializeArray(); //serialize the form into array
-        var route           = $(form).attr('action'); //get the route using attribute action
-
-        // Ajax config
-        $.ajax({
-            type: "POST", //we are using POST method to submit the data to the server side
-            url: route, // get the route value
-            data: formData, // our serialized array data for server side
-            beforeSend: function () {//We add this before send to disable the button once we submit it so that we prevent the multiple click
-                $this.attr('disabled', true).html("Processing...");
-            },
-            success: function (response) {//once the request successfully process to the server side it will return result here
-                $this.attr('disabled', false).html($caption);
-
-                // Reload lists of employees
-                all();
-
-                // We will display the result using alert
-                Swal.fire({
-                  icon: 'success',
-                  title: 'Message Sent! I will get back to you soon',
-                  text: response
-                });
-
-                // Reset form
-                resetForm(form);
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                // You can put something here if there is an error from submitted request
-            }
-        });
-    });
-}
-
-
-</script>
+  <script>  
+$(document).ready(function(){
+  $("button").click(function(){
+jQuery.ajax({
+url: 'message.php',
+type: 'POST',
+  success: function(data) {
+    Swal.fire(
+  'Message Sent!',
+  'I will get back to you as soon!!',
+  'success'
+)             
+  },
+});
+  });
+});  
+</script>  
   
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
