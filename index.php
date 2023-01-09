@@ -47,7 +47,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/replace.png)">
+  <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/profile.png)">
     <div class="overlay-itro"></div>
     <div class="hero-content display-table">
       <div class="table-cell">
@@ -72,7 +72,7 @@
                   <div class="row">
                     <div class="col-sm-6 col-md-5">
                       <div class="about-img">
-                        <img src="assets/img/dra.png" style="width:300px; height:200px;" class="img-fluid rounded b-shadow-a" alt="">
+                        <img src="assets/img/pic.png" style="width:300px; height:200px;" class="img-fluid rounded b-shadow-a" alt="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-7">
@@ -294,7 +294,7 @@
                 Portfolio
               </h3>
               <p class="subtitle-a">
-                SAMPLES OF MY WORK
+                SAMPLES OF MY COMPLETED WORK
               </p>
               <div class="line-mf"></div>
             </div>
@@ -368,7 +368,7 @@
               <div class="work-content">
                 <div class="row">
                   <div class="col-sm-8">
-                    <h2 class="w-title">Online Aucton System</h2>
+                    <h2 class="w-title">LaundryMen</h2>
                     <div class="w-more">
                       <a href='https://github.com/BigDramani1/Capstone' style="color:#0078ff">Click Me</a><span style='float:right'><i class="fa fa-arrow-left" aria-hidden="true"></i> GitHub Link</span>
                     </div>
